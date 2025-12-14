@@ -68,6 +68,14 @@ Options:
   -h, --help  display help for command
 ```
 
+Note: `commander` interprets a string that starts with 2 gutter balls `--` as a
+command line option. To test the cli with a sequence that starts with 2 gutter
+balls, simply execute like so instead:
+
+```
+bowlingcalc -- --<restofsequence>
+```
+
 ### HTTP service
 
 #### Setup
