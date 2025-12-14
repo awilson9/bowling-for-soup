@@ -51,14 +51,20 @@ pnpm cli:setup
 ```
 Usage: bowling-calc [options] <sequence>
 
-Given a sequence of rolls for one line of American Ten-Pin Bowling, produces the total score for the game
+Given a sequence of rolls for one line of American Ten-Pin Bowling, produces the
+total score for the game
 
 Arguments:
-  sequence    The sequence of scores in a bowling game, marking X for a strike, / for a spare, - for no pins, otherwise [1-9] indicating the number of pins knocked down
+  sequence    The sequence of scores in a bowling game, marking X for a strike, /
+              for a spare, - for no pins, otherwise [1-9] indicating the number of
+              pins knocked down
 
 Options:
-  --json      Outputs the score as a json object with the score key set as "score".
+  --json      Outputs the score as a json object with the score key set as
+              "score".
               If this option is not passed, then score is printed to stdout.
+  --debug     If specified, detailed information will be logged to your console
+              during execution
   -h, --help  display help for command
 ```
 
