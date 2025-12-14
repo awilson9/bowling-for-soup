@@ -27,10 +27,9 @@ export const handleSpare = (
     return;
   }
 
-  // 3rd bowl of final frame
+  // 2nd bowl of final frame
   // valid sequences for this frame: 9/X, 1/5, X1/
   // invalid sequences for this frame: XX/, X//,
-
   if (isNil(activeOrPreviousFrame.second)) {
     if (activeOrPreviousFrame.first.bonusResult === 'strike') {
       ctx.addIssue({
@@ -49,7 +48,9 @@ export const handleSpare = (
     return;
   }
 
-  // if the second roll of the final frame is a spare or a strike, then this bowl can't be scored as a spare (it's a strike because there were 10 pins and all of them were hit down)
+  // if the second roll of the final frame is a spare or a strike
+  // then this bowl can't be scored as a spare
+  // (it's _necessarily_ a  strike because there were 10 pins and all of them were hit down)
   if (activeOrPreviousFrame.second.bonusResult !== 'none') {
     ctx.addIssue({
       code: 'custom',
@@ -60,7 +61,8 @@ export const handleSpare = (
     throw new Error();
   }
 
-  // With all the above logic, the only way to score a spare on the 3rd bowl of the last frame is if the first bowl of the frame was a strike
+  // With all the above logic, the only way to score a spare on the 3rd bowl of the last frame
+  // is if the first bowl of the frame was a strike
   // i.e. X1/ is valid. 1// is not. 15/ is not.
   if (activeOrPreviousFrame.first.bonusResult !== 'strike') {
     ctx.addIssue({
