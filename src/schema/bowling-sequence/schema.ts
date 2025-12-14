@@ -57,21 +57,6 @@ export const BowlingSequenceInputSchema = z.string().transform((s, ctx) => {
     return z.NEVER;
   }
 
-  const lastFrame = last(frames);
-  if (lastFrame?.first.bonusResult === 'strike' && isNil(lastFrame.second)) {
-    ctx.addIssue({
-      code: 'custom',
-      message: "You bowled a strike in the last frame but didn't throw a bonus bowl",
-    });
-    return z.NEVER;
-  }
-  if (lastFrame?.second?.bonusResult === 'strike' && isNil(lastFrame.third)) {
-    ctx.addIssue({
-      code: 'custom',
-      message: "You bowled a strike in the last frame but didn't throw a bonus bowl",
-    });
-  }
-
   if (frames.length !== 10) {
     ctx.addIssue({
       code: 'custom',
